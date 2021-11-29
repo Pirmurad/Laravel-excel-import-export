@@ -14,7 +14,7 @@ class PurchaseFactory extends Factory
     public function definition()
     {
         return [
-            'customer_id' => random_int(1,200),
+            'customer_id' => random_int(1,50),
             'bank_acc_number' => $this->faker->numerify('###-###-####'),
             'company' => $this->faker->company(),
         ];

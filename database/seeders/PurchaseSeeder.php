@@ -13,6 +13,6 @@ class PurchaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Purchase::factory(200)->create();
+        \App\Models\Purchase::factory(50)->create();
     }
 }

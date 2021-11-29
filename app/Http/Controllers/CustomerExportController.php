@@ -7,7 +7,6 @@ use App\Exports\CustomersExportHeading;
 use App\Exports\CustomersExportMapping;
 use App\Exports\CustomersExportSheets;
 use App\Exports\CustomersExportSize;
-use App\Exports\CustomersExportStore;
 use App\Exports\CustomersExportStyling;
 use App\Exports\CustomersExportView;
 use App\Http\Requests\StoreCustomerRequest;
@@ -15,7 +14,7 @@ use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use Maatwebsite\Excel\Facades\Excel;
 
-class CustomerController extends Controller
+class CustomerExportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,75 +25,8 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
 
-        return view('customers.index',compact('customers'));
+        return view('customers.export.index',compact('customers'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCustomerRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCustomerRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCustomerRequest  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Customer $customer)
-    {
-        //
-    }
-
 
     /**
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
@@ -181,6 +113,5 @@ class CustomerController extends Controller
     {
         return Excel::download(new CustomersExportSize(),'customers.xlsx');
     }
-
 
 }

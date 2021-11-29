@@ -20,14 +20,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>'export/customers','as'=>'exportCustomers.'],function (){
+//Export Excel
+Route::get('/', [\App\Http\Controllers\CustomerExportController::class,'index'])->name('index');
+Route::get('/export', [\App\Http\Controllers\CustomerExportController::class, 'export'])->name('export');
+Route::get('/export_view', [\App\Http\Controllers\CustomerExportController::class, 'export_view'])->name('export_view');
+Route::get('/export_store', [\App\Http\Controllers\CustomerExportController::class, 'export_store'])->name('export_store');
+Route::get('/export_format/{format}', [\App\Http\Controllers\CustomerExportController::class, 'export_format'])->name('export_format');
+Route::get('/export_sheets', [\App\Http\Controllers\CustomerExportController::class, 'export_sheets'])->name('export_sheets');
+Route::get('/export_headingRow', [\App\Http\Controllers\CustomerExportController::class, 'export_headingRow'])->name('export_headingRow');
+Route::get('/export_mapping', [\App\Http\Controllers\CustomerExportController::class, 'export_mapping'])->name('export_mapping');
+Route::get('/export_styling', [\App\Http\Controllers\CustomerExportController::class, 'export_styling'])->name('export_styling');
+Route::get('/export_autosize', [\App\Http\Controllers\CustomerExportController::class, 'export_autosize'])->name('export_autosize');
+});
 
-Route::get('customers/export',[\App\Http\Controllers\CustomerController::class,'export'])->name('customers.export');
-Route::get('customers/export_view',[\App\Http\Controllers\CustomerController::class,'export_view'])->name('customers.export_view');
-Route::get('customers/export_store',[\App\Http\Controllers\CustomerController::class,'export_store'])->name('customers.export_store');
-Route::get('customers/export_format/{format}',[\App\Http\Controllers\CustomerController::class,'export_format'])->name('customers.export_format');
-Route::get('customers/export_sheets',[\App\Http\Controllers\CustomerController::class,'export_sheets'])->name('customers.export_sheets');
-Route::get('customers/export_headingRow',[\App\Http\Controllers\CustomerController::class,'export_headingRow'])->name('customers.export_headingRow');
-Route::get('customers/export_mapping',[\App\Http\Controllers\CustomerController::class,'export_mapping'])->name('customers.export_mapping');
-Route::get('customers/export_styling',[\App\Http\Controllers\CustomerController::class,'export_styling'])->name('customers.export_styling');
-Route::get('customers/export_autosize',[\App\Http\Controllers\CustomerController::class,'export_autosize'])->name('customers.export_autosize');
-Route::resource('customers',\App\Http\Controllers\CustomerController::class);
+Route::group(['prefix'=>'import/customers','as'=>'importCustomers.'],function (){
+    Route::get('/', [\App\Http\Controllers\CustomerImportController::class,'index'])->name('index');
+    Route::post('/import', [\App\Http\Controllers\CustomerImportController::class,'import'])->name('import');
+});
+//Import Excel
+
