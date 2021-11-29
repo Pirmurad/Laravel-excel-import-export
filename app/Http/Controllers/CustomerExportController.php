@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CustomersExport;
+use App\Exports\CustomersExportDateFormat;
 use App\Exports\CustomersExportHeading;
 use App\Exports\CustomersExportMapping;
 use App\Exports\CustomersExportSheets;
@@ -112,6 +113,11 @@ class CustomerExportController extends Controller
     public function export_autosize()
     {
         return Excel::download(new CustomersExportSize(),'customers.xlsx');
+    }
+
+    public function export_dateformat()
+    {
+        return Excel::download(new CustomersExportDateFormat(),'customers.xlsx');
     }
 
 }

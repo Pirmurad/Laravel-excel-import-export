@@ -25,6 +25,8 @@
                         <a class="btn btn-info mb-2" href="{{ route('exportCustomers.export_styling') }}">Export with Styling</a>
 
                         <a class="btn btn-dark mb-2" href="{{ route('exportCustomers.export_autosize') }}">Export with Autosize</a>
+
+                        <a class="btn btn-light mb-2" href="{{ route('exportCustomers.export_dateformat') }}">Export with DateFormat</a>
                         @include('customers.table',$customers)
                     </div>
                 </div>

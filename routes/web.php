@@ -32,6 +32,7 @@ Route::get('/export_headingRow', [\App\Http\Controllers\CustomerExportController
 Route::get('/export_mapping', [\App\Http\Controllers\CustomerExportController::class, 'export_mapping'])->name('export_mapping');
 Route::get('/export_styling', [\App\Http\Controllers\CustomerExportController::class, 'export_styling'])->name('export_styling');
 Route::get('/export_autosize', [\App\Http\Controllers\CustomerExportController::class, 'export_autosize'])->name('export_autosize');
+Route::get('/export_dateformat', [\App\Http\Controllers\CustomerExportController::class, 'export_dateformat'])->name('export_dateformat');
 });
 
 Route::group(['prefix'=>'import/customers','as'=>'importCustomers.'],function (){
